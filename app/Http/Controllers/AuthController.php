@@ -9,11 +9,19 @@ use App\Models\User;
 class AuthController extends Controller
 {
 
+    /**
+     * Show login form
+     */
     public function login()
     {
         return view("auth.login");
     }
 
+    /**
+     * Process login form
+     *
+     * @param AuthLoginRequest $request
+     */
     public function loginProcess(AuthLoginRequest $request)
     {
         $data = $request->only('email', 'password');
@@ -24,17 +32,28 @@ class AuthController extends Controller
         return redirect(route("login"))->withErrors(["email" => "User not found"]);
     }
 
+    /**
+     * Process logout
+     */
     public function logout()
     {
         auth("web")->logout();
         return redirect(route("login"));
     }
 
+    /**
+     * Show register form
+     */
     public function register()
     {
         return view("auth.register");
     }
 
+    /**
+     * Process registration
+     *
+     * @param AuthRegisterRequest $request
+     */
     public function registerProcess(AuthRegisterRequest $request)
     {
         $data = $request->only('name', 'email', 'password');
