@@ -13,7 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('index');
+})->name('home');
 
+//Route::resource('posts', \App\Http\Controllers\PostController::class);
+
+Route::resource('posts', \App\Http\Controllers\PostController::class)->only([
+    'index',
+    'show',
+    'create',
+]);
 
 Route::middleware("guest:web")->group(function () {
     Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
@@ -26,7 +36,11 @@ Route::middleware("guest:web")->group(function () {
 Route::middleware("auth:web")->group(function () {
     Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('home');
+    Route::resource('posts', \App\Http\Controllers\PostController::class)->only([
+        'store',
+        'update',
+        'destroy',
+        'edit',
+
+    ]);
 });
