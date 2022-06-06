@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
-use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -34,10 +33,6 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $data = $request->all();
-
-        if (!$data["url"]) {
-            $data["url"] = env('APP_URL').Str::slug($data["title"], '_');
-        }
 
         $filename = pathinfo($request->file("image")->getClientOriginalName(), PATHINFO_FILENAME);
         $extension = $request->file("image")->getClientOriginalExtension();
@@ -78,10 +73,6 @@ class PostController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         $data = $request->all();
-
-        if (!$data["url"]) {
-            $data["url"] = env('APP_URL').Str::slug($data["title"], '_');
-        }
 
         if ($request->hasFile("image")) {
             $filename = pathinfo($request->file("image")->getClientOriginalName(), PATHINFO_FILENAME);
