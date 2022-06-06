@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::resource('posts', \App\Http\Controllers\PostController::class)->only([
     'index',
     'show',
-    'create',
+    'create', // Not should be there
 ]);
 
 Route::middleware("guest:web")->group(function () {
@@ -37,10 +37,10 @@ Route::middleware("auth:web")->group(function () {
     Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
     Route::resource('posts', \App\Http\Controllers\PostController::class)->only([
+        //'create', -> tried to hide route from guests, but get 404 Not Found
         'store',
         'update',
         'destroy',
         'edit',
-
     ]);
 });
