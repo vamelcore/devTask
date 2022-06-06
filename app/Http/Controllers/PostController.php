@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
@@ -12,7 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all()->sortBy('sort_order');
+        $posts = Cache::remember('posts', config('cache.default_cache_time'), function (){
+            return Post::all()->sortBy('sort_order');
+        });
 
         return view("posts.index", compact("posts"));
     }
