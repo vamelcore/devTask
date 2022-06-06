@@ -26,12 +26,18 @@
             <th>Title</th>
             <th>Url</th>
             <th>Text</th>
+            <th>Image</th>
+            <th>Active</th>
+            <th>Sort Order</th>
         </tr>
         @foreach ($posts as $post)
             <tr>
                 <td>{{ $post->title }}</td>
                 <td>{{ $post->url }}</td>
                 <td>{{ $post->text }}</td>
+                <td>{{ $post->image }}</td>
+                <td>{{ $post->active }}</td>
+                <td>{{ $post->sort_order }}</td>
                 <td>
                     <a class="btn btn-info" href="{{ route('posts.show', $post->id) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('posts.edit', $post->id) }}">Edit</a>
