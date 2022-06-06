@@ -9,4 +9,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     use HasFactory, SoftDeletes;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'title',
+        'text',
+        'image',
+        'url',
+        'active',
+        'sort_order'
+    ];
 }
