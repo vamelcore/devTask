@@ -29,10 +29,10 @@ Route::resource('posts', \App\Http\Controllers\PostController::class)->only([
 
 Route::middleware("guest:web")->group(function () {
     Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
-    Route::post('/login_process', [\App\Http\Controllers\AuthController::class, 'loginProcess'])->name('login_process');
+    Route::post('/login-process', [\App\Http\Controllers\AuthController::class, 'loginProcess'])->name('login.process');
 
     Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');
-    Route::post('/register_process', [\App\Http\Controllers\AuthController::class, 'registerProcess'])->name('register_process');
+    Route::post('/register-process', [\App\Http\Controllers\AuthController::class, 'registerProcess'])->name('register.process');
 });
 
 Route::middleware("auth:web")->group(function () {

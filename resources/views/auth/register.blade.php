@@ -6,7 +6,7 @@
     <div class="content">
 
         <h1>Registration</h1>
-        <form method="POST" action="{{ route("register_process") }}">
+        <form method="POST" action="{{ route("register.process") }}">
             @csrf
             <div class="form-outline mb-4">
                 <label for="exampleInputName" class="form-label">Name</label>
