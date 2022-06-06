@@ -6,10 +6,10 @@
 
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
+            <div class="float-start">
                 <h2>Show Post</h2>
             </div>
-            <div class="pull-right">
+            <div class="float-end">
                 <a class="btn btn-primary" href="{{ route('posts.index') }}"> Back</a>
             </div>
         </div>

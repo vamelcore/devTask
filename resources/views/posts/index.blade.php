@@ -6,10 +6,10 @@
 
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
+            <div class="float-start">
                 <h2>Posts List</h2>
             </div>
-            <div class="pull-right">
+            <div class="float-end">
                 <a class="btn btn-success" href="{{ route('posts.create') }}"> Create New Post</a>
             </div>
         </div>
@@ -29,6 +29,7 @@
             <th>Image</th>
             <th>Active</th>
             <th>Sort Order</th>
+            <th></th>
         </tr>
         @foreach ($posts as $post)
             <tr>
