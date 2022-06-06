@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('url');
             $table->boolean('active')->default(0);
-            $table->integer('sort_order');
+            $table->integer('sort_order')->default(500);
             $table->timestamps();
             $table->softDeletes();
         });
