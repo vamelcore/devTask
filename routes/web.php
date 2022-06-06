@@ -18,7 +18,9 @@ Route::get('/', function () {
 })->name('home');
 
 //Route::resource('posts', \App\Http\Controllers\PostController::class);
-
+/**
+ * Try to split Resource Controller for guests and authorized users
+ */
 Route::resource('posts', \App\Http\Controllers\PostController::class)->only([
     'index',
     'show',
